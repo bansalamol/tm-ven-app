@@ -1,165 +1,835 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="1">
-        <!-- Demo Vendors -->
+        <!-- ========================================
+             DEMO VENDORS - Complete Profiles
+        ======================================== -->
+
+        <!-- Vendor 1: Premium Electronics Supplier (Class A) -->
         <record id="vendor_demo_1" model="vendor.vendor">
-            <field name="name">TechSupply Corp</field>
-            <field name="code">VEN001</field>
+            <field name="name">Precision Electronics Pvt Ltd</field>
+            <field name="code">VEN00001</field>
             <field name="category_id" ref="vendor_category_electronics"/>
             <field name="vendor_type">goods</field>
             <field name="status">active</field>
-            <field name="contact_person">John Smith</field>
-            <field name="phone">+1-555-0100</field>
-            <field name="email">contact@techsupply.com</field>
-            <field name="website">www.techsupply.com</field>
-            <field name="street">123 Tech Street</field>
-            <field name="city">San Francisco</field>
-            <field name="zip">94102</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="vat">US123456789</field>
+            <field name="onboarding_state">approved</field>
+            <field name="contact_person">Rajesh Kumar</field>
+            <field name="phone">+91-9876543210</field>
+            <field name="email">rajesh@precisionelectronics.in</field>
+            <field name="website">www.precisionelectronics.in</field>
+            <field name="street">Plot No. 45, Electronics City</field>
+            <field name="street2">Phase 2, Sector 18</field>
+            <field name="city">Bangalore</field>
+            <field name="state_id" ref="base.state_in_ka"/>
+            <field name="zip">560100</field>
+            <field name="country_id" ref="base.in"/>
+            <field name="gst_number">29ABCDE1234F1Z5</field>
+            <field name="pan_number">ABCDE1234F</field>
+            <field name="iso_certified">True</field>
+            <field name="iso_valid_until" eval="(DateTime.today() + timedelta(days=365)).strftime('%Y-%m-%d')"/>
+            <field name="msme_registered">True</field>
+            <field name="msme_number">UDYAM-KA-12-1234567</field>
+            <field name="credit_limit">5000000.00</field>
+            <field name="payment_terms">Net 30</field>
+            <field name="total_purchases">2500000.00</field>
+            <field name="purchase_count">45</field>
             <field name="tag_ids" eval="[(6, 0, [ref('vendor_tag_preferred'), ref('vendor_tag_certified')])]"/>
-            <field name="notes">Reliable supplier of electronic components</field>
+            <field name="capabilities">SMT Assembly, PCB Manufacturing, Component Sourcing</field>
+            <field name="certifications_held">ISO 9001:2015, ISO 14001:2015, RoHS Compliant</field>
+            <field name="notes">Premium supplier with excellent track record. Consistent quality and on-time delivery.</field>
         </record>
 
+        <!-- Vendor 2: Good Machining Services (Class B) -->
         <record id="vendor_demo_2" model="vendor.vendor">
-            <field name="name">Global Materials Ltd</field>
-            <field name="code">VEN002</field>
-            <field name="category_id" ref="vendor_category_raw_materials"/>
+            <field name="name">Shivalik Machining Works</field>
+            <field name="code">VEN00002</field>
+            <field name="category_id" ref="vendor_category_manufacturing"/>
             <field name="vendor_type">goods</field>
             <field name="status">active</field>
-            <field name="contact_person">Maria Garcia</field>
-            <field name="phone">+44-20-1234-5678</field>
-            <field name="email">info@globalmaterials.co.uk</field>
-            <field name="website">www.globalmaterials.co.uk</field>
-            <field name="street">456 Industrial Way</field>
-            <field name="city">London</field>
-            <field name="zip">SW1A 1AA</field>
-            <field name="country_id" ref="base.uk"/>
-            <field name="vat">GB987654321</field>
-            <field name="tag_ids" eval="[(6, 0, [ref('vendor_tag_international')])]"/>
-            <field name="notes">International supplier of raw materials</field>
+            <field name="onboarding_state">approved</field>
+            <field name="contact_person">Suresh Patel</field>
+            <field name="phone">+91-9876543211</field>
+            <field name="email">info@shivalikmachining.com</field>
+            <field name="website">www.shivalikmachining.com</field>
+            <field name="street">Industrial Area, Sector 25</field>
+            <field name="city">Faridabad</field>
+            <field name="state_id" ref="base.state_in_hr"/>
+            <field name="zip">121004</field>
+            <field name="country_id" ref="base.in"/>
+            <field name="gst_number">06FGHIJ5678K2L3</field>
+            <field name="pan_number">FGHIJ5678K</field>
+            <field name="iso_certified">True</field>
+            <field name="iso_valid_until" eval="(DateTime.today() + timedelta(days=180)).strftime('%Y-%m-%d')"/>
+            <field name="msme_registered">True</field>
+            <field name="msme_number">UDYAM-HR-12-7654321</field>
+            <field name="credit_limit">2000000.00</field>
+            <field name="payment_terms">Net 45</field>
+            <field name="total_purchases">850000.00</field>
+            <field name="purchase_count">28</field>
+            <field name="tag_ids" eval="[(6, 0, [ref('vendor_tag_local')])]"/>
+            <field name="capabilities">CNC Machining, Turning, Milling, Fabrication</field>
+            <field name="certifications_held">ISO 9001:2015</field>
+            <field name="notes">Reliable machining partner. Good quality but occasional delivery delays.</field>
         </record>
 
+        <!-- Vendor 3: New Vendor Under Evaluation (Class C) -->
         <record id="vendor_demo_3" model="vendor.vendor">
-            <field name="name">Swift Logistics</field>
-            <field name="code">VEN003</field>
+            <field name="name">MetalCraft Industries</field>
+            <field name="code">VEN00003</field>
+            <field name="category_id" ref="vendor_category_raw_materials"/>
+            <field name="vendor_type">goods</field>
+            <field name="status">potential</field>
+            <field name="onboarding_state">under_review</field>
+            <field name="contact_person">Amit Shah</field>
+            <field name="phone">+91-9876543212</field>
+            <field name="email">amit@metalcraft.in</field>
+            <field name="website">www.metalcraft.in</field>
+            <field name="street">GIDC Estate, Plot 78</field>
+            <field name="city">Ahmedabad</field>
+            <field name="state_id" ref="base.state_in_gj"/>
+            <field name="zip">382028</field>
+            <field name="country_id" ref="base.in"/>
+            <field name="gst_number">24KLMNO9012P3Q4</field>
+            <field name="pan_number">KLMNO9012P</field>
+            <field name="iso_certified">False</field>
+            <field name="msme_registered">True</field>
+            <field name="msme_number">UDYAM-GJ-24-9876543</field>
+            <field name="credit_limit">500000.00</field>
+            <field name="payment_terms">Advance 50%, Balance on Delivery</field>
+            <field name="total_purchases">125000.00</field>
+            <field name="purchase_count">3</field>
+            <field name="tag_ids" eval="[(6, 0, [ref('vendor_tag_local')])]"/>
+            <field name="capabilities">Metal Casting, Forging, Heat Treatment</field>
+            <field name="certifications_held">None currently</field>
+            <field name="notes">New vendor being evaluated. First few orders were acceptable.</field>
+        </record>
+
+        <!-- Vendor 4: IT Services Provider -->
+        <record id="vendor_demo_4" model="vendor.vendor">
+            <field name="name">TechNova Solutions Pvt Ltd</field>
+            <field name="code">VEN00004</field>
+            <field name="category_id" ref="vendor_category_it"/>
+            <field name="vendor_type">services</field>
+            <field name="status">active</field>
+            <field name="onboarding_state">approved</field>
+            <field name="contact_person">Priya Sharma</field>
+            <field name="phone">+91-9876543213</field>
+            <field name="email">priya@technova.in</field>
+            <field name="website">www.technova.in</field>
+            <field name="street">Cybercity, Tower B, Floor 5</field>
+            <field name="city">Gurgaon</field>
+            <field name="state_id" ref="base.state_in_hr"/>
+            <field name="zip">122002</field>
+            <field name="country_id" ref="base.in"/>
+            <field name="gst_number">06RSTUV3456W7X8</field>
+            <field name="pan_number">RSTUV3456W</field>
+            <field name="iso_certified">True</field>
+            <field name="iso_valid_until" eval="(DateTime.today() + timedelta(days=545)).strftime('%Y-%m-%d')"/>
+            <field name="credit_limit">1000000.00</field>
+            <field name="payment_terms">Net 15</field>
+            <field name="total_purchases">650000.00</field>
+            <field name="purchase_count">12</field>
+            <field name="tag_ids" eval="[(6, 0, [ref('vendor_tag_preferred'), ref('vendor_tag_certified')])]"/>
+            <field name="capabilities">Software Development, Cloud Services, IT Consulting</field>
+            <field name="certifications_held">ISO 27001:2013, CMMI Level 3</field>
+            <field name="notes">Excellent IT services provider. Responsive and professional team.</field>
+        </record>
+
+        <!-- Vendor 5: Logistics Provider -->
+        <record id="vendor_demo_5" model="vendor.vendor">
+            <field name="name">Express Freight Logistics</field>
+            <field name="code">VEN00005</field>
             <field name="category_id" ref="vendor_category_logistics"/>
             <field name="vendor_type">services</field>
             <field name="status">active</field>
-            <field name="contact_person">Robert Chen</field>
-            <field name="phone">+1-555-0200</field>
-            <field name="email">dispatch@swiftlogistics.com</field>
-            <field name="website">www.swiftlogistics.com</field>
-            <field name="street">789 Freight Avenue</field>
-            <field name="city">Los Angeles</field>
-            <field name="zip">90001</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="vat">US555555555</field>
+            <field name="onboarding_state">approved</field>
+            <field name="contact_person">Vikram Singh</field>
+            <field name="phone">+91-9876543214</field>
+            <field name="email">vikram@expressfreight.in</field>
+            <field name="website">www.expressfreight.in</field>
+            <field name="street">Transport Nagar, Warehouse Complex</field>
+            <field name="city">Mumbai</field>
+            <field name="state_id" ref="base.state_in_mh"/>
+            <field name="zip">400001</field>
+            <field name="country_id" ref="base.in"/>
+            <field name="gst_number">27YZABC7890D1E2</field>
+            <field name="pan_number">YZABC7890D</field>
+            <field name="iso_certified">False</field>
+            <field name="credit_limit">300000.00</field>
+            <field name="payment_terms">Net 7</field>
+            <field name="total_purchases">425000.00</field>
+            <field name="purchase_count">87</field>
             <field name="tag_ids" eval="[(6, 0, [ref('vendor_tag_preferred'), ref('vendor_tag_local')])]"/>
-            <field name="notes">Fast and reliable logistics partner</field>
+            <field name="capabilities">Domestic Transport, Warehousing, Last Mile Delivery</field>
+            <field name="certifications_held">None</field>
+            <field name="notes">Fast and reliable logistics. Very competitive pricing.</field>
         </record>
 
-        <record id="vendor_demo_4" model="vendor.vendor">
-            <field name="name">BuildPro Construction</field>
-            <field name="code">VEN004</field>
-            <field name="category_id" ref="vendor_category_construction"/>
-            <field name="vendor_type">contractor</field>
-            <field name="status">potential</field>
-            <field name="contact_person">Sarah Johnson</field>
-            <field name="phone">+1-555-0300</field>
-            <field name="email">projects@buildpro.com</field>
-            <field name="website">www.buildpro.com</field>
-            <field name="street">321 Construction Blvd</field>
-            <field name="city">Chicago</field>
-            <field name="zip">60601</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="vat">US777777777</field>
-            <field name="tag_ids" eval="[(6, 0, [ref('vendor_tag_local')])]"/>
-            <field name="notes">Potential contractor for construction projects</field>
-        </record>
+        <!-- ========================================
+             VENDOR BANK ACCOUNTS
+        ======================================== -->
 
-        <record id="vendor_demo_5" model="vendor.vendor">
-            <field name="name">TechConsult Solutions</field>
-            <field name="code">VEN005</field>
-            <field name="category_id" ref="vendor_category_it"/>
-            <field name="vendor_type">consultant</field>
-            <field name="status">active</field>
-            <field name="contact_person">David Lee</field>
-            <field name="phone">+1-555-0400</field>
-            <field name="email">info@techconsult.com</field>
-            <field name="website">www.techconsult.com</field>
-            <field name="street">555 Silicon Valley Drive</field>
-            <field name="city">Palo Alto</field>
-            <field name="zip">94301</field>
-            <field name="country_id" ref="base.us"/>
-            <field name="vat">US888888888</field>
-            <field name="tag_ids" eval="[(6, 0, [ref('vendor_tag_certified')])]"/>
-            <field name="notes">IT consulting and software development</field>
-        </record>
-
-        <!-- Demo Bank Accounts -->
         <record id="vendor_bank_demo_1" model="vendor.bank.account">
             <field name="vendor_id" ref="vendor_demo_1"/>
-            <field name="bank_name">Bank of America</field>
-            <field name="account_number">1234567890</field>
-            <field name="account_holder_name">TechSupply Corp</field>
-            <field name="bank_code">BOFAUS3N</field>
+            <field name="bank_name">HDFC Bank</field>
+            <field name="branch_name">Electronics City Branch</field>
+            <field name="account_number">50100123456789</field>
+            <field name="account_holder_name">Precision Electronics Pvt Ltd</field>
+            <field name="bank_code">HDFC0001234</field>
+            <field name="ifsc_code">HDFC0001234</field>
+            <field name="swift_code">HDFCINBB</field>
             <field name="is_primary">True</field>
         </record>
 
         <record id="vendor_bank_demo_2" model="vendor.bank.account">
             <field name="vendor_id" ref="vendor_demo_2"/>
-            <field name="bank_name">Barclays Bank</field>
-            <field name="account_number">GB29NWBK60161331926819</field>
-            <field name="account_holder_name">Global Materials Ltd</field>
-            <field name="bank_code">BARCGB22</field>
-            <field name="iban">GB29NWBK60161331926819</field>
+            <field name="bank_name">State Bank of India</field>
+            <field name="branch_name">Faridabad Branch</field>
+            <field name="account_number">38123456789012</field>
+            <field name="account_holder_name">Shivalik Machining Works</field>
+            <field name="bank_code">SBIN0012345</field>
+            <field name="ifsc_code">SBIN0012345</field>
             <field name="is_primary">True</field>
         </record>
 
-        <!-- Demo Vendor Ratings -->
-        <record id="vendor_rating_demo_1" model="vendor.rating">
+        <record id="vendor_bank_demo_3" model="vendor.bank.account">
+            <field name="vendor_id" ref="vendor_demo_3"/>
+            <field name="bank_name">ICICI Bank</field>
+            <field name="branch_name">Ahmedabad Branch</field>
+            <field name="account_number">012345678901</field>
+            <field name="account_holder_name">MetalCraft Industries</field>
+            <field name="bank_code">ICIC0001234</field>
+            <field name="ifsc_code">ICIC0001234</field>
+            <field name="is_primary">True</field>
+        </record>
+
+        <!-- ========================================
+             VENDOR DOCUMENTS WITH VARIOUS EXPIRY DATES
+        ======================================== -->
+
+        <!-- Vendor 1 Documents - All Current -->
+        <record id="vendor_doc_1_gst" model="vendor.document">
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="name">GST Registration Certificate</field>
+            <field name="document_type">gst</field>
+            <field name="document_number">29ABCDE1234F1Z5</field>
+            <field name="issue_date" eval="(DateTime.today() - timedelta(days=730)).strftime('%Y-%m-%d')"/>
+            <field name="expiry_date" eval="(DateTime.today() + timedelta(days=365)).strftime('%Y-%m-%d')"/>
+            <field name="status">approved</field>
+            <field name="notes">Valid GST certificate</field>
+        </record>
+
+        <record id="vendor_doc_1_iso" model="vendor.document">
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="name">ISO 9001:2015 Certificate</field>
+            <field name="document_type">iso</field>
+            <field name="document_number">ISO-9001-2023-12345</field>
+            <field name="issue_date" eval="(DateTime.today() - timedelta(days=365)).strftime('%Y-%m-%d')"/>
+            <field name="expiry_date" eval="(DateTime.today() + timedelta(days=730)).strftime('%Y-%m-%d')"/>
+            <field name="status">approved</field>
+            <field name="notes">ISO 9001:2015 certified by TUV India</field>
+        </record>
+
+        <record id="vendor_doc_1_rohs" model="vendor.document">
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="name">RoHS Compliance Certificate</field>
+            <field name="document_type">rohs</field>
+            <field name="document_number">ROHS-2024-PE-001</field>
+            <field name="issue_date" eval="(DateTime.today() - timedelta(days=180)).strftime('%Y-%m-%d')"/>
+            <field name="expiry_date" eval="(DateTime.today() + timedelta(days=545)).strftime('%Y-%m-%d')"/>
+            <field name="status">approved</field>
+            <field name="notes">RoHS compliant for all electronic components</field>
+        </record>
+
+        <!-- Vendor 2 Documents - ISO expiring soon -->
+        <record id="vendor_doc_2_gst" model="vendor.document">
+            <field name="vendor_id" ref="vendor_demo_2"/>
+            <field name="name">GST Registration Certificate</field>
+            <field name="document_type">gst</field>
+            <field name="document_number">06FGHIJ5678K2L3</field>
+            <field name="issue_date" eval="(DateTime.today() - timedelta(days=900)).strftime('%Y-%m-%d')"/>
+            <field name="expiry_date" eval="(DateTime.today() + timedelta(days=460)).strftime('%Y-%m-%d')"/>
+            <field name="status">approved</field>
+        </record>
+
+        <record id="vendor_doc_2_iso" model="vendor.document">
+            <field name="vendor_id" ref="vendor_demo_2"/>
+            <field name="name">ISO 9001:2015 Certificate</field>
+            <field name="document_type">iso</field>
+            <field name="document_number">ISO-9001-2022-67890</field>
+            <field name="issue_date" eval="(DateTime.today() - timedelta(days=1095)).strftime('%Y-%m-%d')"/>
+            <field name="expiry_date" eval="(DateTime.today() + timedelta(days=25)).strftime('%Y-%m-%d')"/>
+            <field name="status">approved</field>
+            <field name="notes">⚠️ EXPIRING SOON - Renewal required</field>
+        </record>
+
+        <!-- Vendor 3 Documents - Some pending -->
+        <record id="vendor_doc_3_gst" model="vendor.document">
+            <field name="vendor_id" ref="vendor_demo_3"/>
+            <field name="name">GST Registration Certificate</field>
+            <field name="document_type">gst</field>
+            <field name="document_number">24KLMNO9012P3Q4</field>
+            <field name="issue_date" eval="(DateTime.today() - timedelta(days=545)).strftime('%Y-%m-%d')"/>
+            <field name="expiry_date" eval="(DateTime.today() + timedelta(days=545)).strftime('%Y-%m-%d')"/>
+            <field name="status">pending_review</field>
+            <field name="notes">Under verification</field>
+        </record>
+
+        <record id="vendor_doc_3_pan" model="vendor.document">
+            <field name="vendor_id" ref="vendor_demo_3"/>
+            <field name="name">PAN Card</field>
+            <field name="document_type">pan</field>
+            <field name="document_number">KLMNO9012P</field>
+            <field name="issue_date" eval="(DateTime.today() - timedelta(days=1825)).strftime('%Y-%m-%d')"/>
+            <field name="status">approved</field>
+        </record>
+
+        <!-- ========================================
+             VENDOR CHECKLISTS
+        ======================================== -->
+
+        <!-- Vendor 1 - All Complete -->
+        <record id="vendor_checklist_1_1" model="vendor.checklist">
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="template_id" ref="checklist_gst_certificate"/>
+            <field name="completed">True</field>
+            <field name="completed_date" eval="(DateTime.today() - timedelta(days=90)).strftime('%Y-%m-%d')"/>
+            <field name="notes">Verified and approved</field>
+        </record>
+
+        <record id="vendor_checklist_1_2" model="vendor.checklist">
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="template_id" ref="checklist_pan_card"/>
+            <field name="completed">True</field>
+            <field name="completed_date" eval="(DateTime.today() - timedelta(days=90)).strftime('%Y-%m-%d')"/>
+            <field name="notes">Verified and approved</field>
+        </record>
+
+        <record id="vendor_checklist_1_3" model="vendor.checklist">
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="template_id" ref="checklist_iso_certificate"/>
+            <field name="completed">True</field>
+            <field name="completed_date" eval="(DateTime.today() - timedelta(days=90)).strftime('%Y-%m-%d')"/>
+            <field name="notes">ISO 9001:2015 certified</field>
+        </record>
+
+        <record id="vendor_checklist_1_4" model="vendor.checklist">
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="template_id" ref="checklist_bank_details"/>
+            <field name="completed">True</field>
+            <field name="completed_date" eval="(DateTime.today() - timedelta(days=90)).strftime('%Y-%m-%d')"/>
+            <field name="notes">Bank account verified</field>
+        </record>
+
+        <!-- Vendor 3 - Incomplete -->
+        <record id="vendor_checklist_3_1" model="vendor.checklist">
+            <field name="vendor_id" ref="vendor_demo_3"/>
+            <field name="template_id" ref="checklist_gst_certificate"/>
+            <field name="completed">True</field>
+            <field name="completed_date" eval="(DateTime.today() - timedelta(days=15)).strftime('%Y-%m-%d')"/>
+        </record>
+
+        <record id="vendor_checklist_3_2" model="vendor.checklist">
+            <field name="vendor_id" ref="vendor_demo_3"/>
+            <field name="template_id" ref="checklist_iso_certificate"/>
+            <field name="completed">False</field>
+            <field name="notes">ISO certification pending - vendor not yet certified</field>
+        </record>
+
+        <record id="vendor_checklist_3_3" model="vendor.checklist">
+            <field name="vendor_id" ref="vendor_demo_3"/>
+            <field name="template_id" ref="checklist_quality_system"/>
+            <field name="completed">False</field>
+            <field name="notes">Quality audit scheduled for next month</field>
+        </record>
+
+        <!-- ========================================
+             VENDOR RATINGS
+        ======================================== -->
+
+        <!-- Vendor 1 - Excellent Ratings (Class A) -->
+        <record id="vendor_rating_1_1" model="vendor.rating">
             <field name="vendor_id" ref="vendor_demo_1"/>
             <field name="rating_date" eval="(DateTime.today() - timedelta(days=30)).strftime('%Y-%m-%d')"/>
             <field name="quality_rating">5</field>
             <field name="delivery_rating">5</field>
-            <field name="service_rating">4</field>
+            <field name="service_rating">5</field>
             <field name="pricing_rating">4</field>
-            <field name="notes">Excellent quality and timely delivery</field>
+            <field name="notes">Excellent quality PCBs. Zero defects in latest batch. On-time delivery.</field>
             <field name="state">confirmed</field>
         </record>
 
-        <record id="vendor_rating_demo_2" model="vendor.rating">
+        <record id="vendor_rating_1_2" model="vendor.rating">
             <field name="vendor_id" ref="vendor_demo_1"/>
             <field name="rating_date" eval="(DateTime.today() - timedelta(days=60)).strftime('%Y-%m-%d')"/>
+            <field name="quality_rating">5</field>
+            <field name="delivery_rating">5</field>
+            <field name="service_rating">4</field>
+            <field name="pricing_rating">4</field>
+            <field name="notes">Very satisfied. Components met all specifications.</field>
+            <field name="state">confirmed</field>
+        </record>
+
+        <record id="vendor_rating_1_3" model="vendor.rating">
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="rating_date" eval="(DateTime.today() - timedelta(days=90)).strftime('%Y-%m-%d')"/>
             <field name="quality_rating">5</field>
             <field name="delivery_rating">4</field>
             <field name="service_rating">5</field>
             <field name="pricing_rating">4</field>
-            <field name="notes">Very satisfied with the products</field>
+            <field name="notes">Consistent performance. Highly recommended.</field>
             <field name="state">confirmed</field>
         </record>
 
-        <record id="vendor_rating_demo_3" model="vendor.rating">
+        <!-- Vendor 2 - Good Ratings (Class B) -->
+        <record id="vendor_rating_2_1" model="vendor.rating">
             <field name="vendor_id" ref="vendor_demo_2"/>
             <field name="rating_date" eval="(DateTime.today() - timedelta(days=45)).strftime('%Y-%m-%d')"/>
             <field name="quality_rating">4</field>
             <field name="delivery_rating">3</field>
             <field name="service_rating">4</field>
-            <field name="pricing_rating">5</field>
-            <field name="notes">Good materials but delivery could be improved</field>
+            <field name="pricing_rating">4</field>
+            <field name="notes">Good machining quality but 5 days late on delivery.</field>
             <field name="state">confirmed</field>
         </record>
 
-        <record id="vendor_rating_demo_4" model="vendor.rating">
-            <field name="vendor_id" ref="vendor_demo_3"/>
+        <record id="vendor_rating_2_2" model="vendor.rating">
+            <field name="vendor_id" ref="vendor_demo_2"/>
+            <field name="rating_date" eval="(DateTime.today() - timedelta(days=120)).strftime('%Y-%m-%d')"/>
+            <field name="quality_rating">4</field>
+            <field name="delivery_rating">4</field>
+            <field name="service_rating">3</field>
+            <field name="pricing_rating">5</field>
+            <field name="notes">Acceptable quality. Competitive pricing.</field>
+            <field name="state">confirmed</field>
+        </record>
+
+        <!-- Vendor 5 - Excellent Service Ratings -->
+        <record id="vendor_rating_5_1" model="vendor.rating">
+            <field name="vendor_id" ref="vendor_demo_5"/>
             <field name="rating_date" eval="(DateTime.today() - timedelta(days=15)).strftime('%Y-%m-%d')"/>
             <field name="quality_rating">5</field>
             <field name="delivery_rating">5</field>
             <field name="service_rating">5</field>
-            <field name="pricing_rating">4</field>
-            <field name="notes">Fastest delivery service we've used</field>
+            <field name="pricing_rating">5</field>
+            <field name="notes">Fastest logistics service. Excellent tracking system.</field>
             <field name="state">confirmed</field>
         </record>
+
+        <!-- ========================================
+             RFQ #1 - Electronics Components (Complete Workflow)
+        ======================================== -->
+
+        <record id="rfq_demo_1" model="vendor.rfq">
+            <field name="name">RFQ/2024/0001</field>
+            <field name="date_created" eval="(DateTime.today() - timedelta(days=45)).strftime('%Y-%m-%d')"/>
+            <field name="deadline" eval="(DateTime.today() - timedelta(days=30)).strftime('%Y-%m-%d')"/>
+            <field name="category_id" ref="vendor_category_electronics"/>
+            <field name="vendor_ids" eval="[(6, 0, [ref('vendor_demo_1')])]"/>
+            <field name="state">awarded</field>
+            <field name="awarded_vendor_id" ref="vendor_demo_1"/>
+            <field name="description">Procurement of PCBs and electronic components for Q1 2025 production</field>
+            <field name="technical_specifications">FR4 material, 1.6mm thickness, HASL finish, SMT assembly required</field>
+            <field name="terms_conditions">Payment: Net 30 days. Delivery: FOB Bangalore. Warranty: 12 months</field>
+        </record>
+
+        <record id="rfq_demo_1_line_1" model="vendor.rfq.line">
+            <field name="rfq_id" ref="rfq_demo_1"/>
+            <field name="sequence">10</field>
+            <field name="description">Double Layer PCB - FR4 Material</field>
+            <field name="quantity">500</field>
+            <field name="delivery_date_required" eval="(DateTime.today() - timedelta(days=10)).strftime('%Y-%m-%d')"/>
+            <field name="specifications">Size: 100mm x 80mm, Copper thickness: 1oz, Green solder mask</field>
+        </record>
+
+        <record id="rfq_demo_1_line_2" model="vendor.rfq.line">
+            <field name="rfq_id" ref="rfq_demo_1"/>
+            <field name="sequence">20</field>
+            <field name="description">SMT Components - Resistors and Capacitors</field>
+            <field name="quantity">10000</field>
+            <field name="delivery_date_required" eval="(DateTime.today() - timedelta(days=10)).strftime('%Y-%m-%d')"/>
+            <field name="specifications">0805 package, ±5% tolerance, lead-free</field>
+        </record>
+
+        <!-- Quotation from Vendor 1 (AWARDED) -->
+        <record id="quotation_demo_1_1" model="vendor.quotation">
+            <field name="name">QTN/2024/0001</field>
+            <field name="rfq_id" ref="rfq_demo_1"/>
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="date_submitted" eval="(DateTime.today() - timedelta(days=32)).strftime('%Y-%m-%d')"/>
+            <field name="valid_until" eval="(DateTime.today() + timedelta(days=30)).strftime('%Y-%m-%d')"/>
+            <field name="state">awarded</field>
+            <field name="evaluation_status">completed</field>
+            <field name="payment_terms">Net 30 days from invoice date</field>
+            <field name="delivery_terms">FOB Bangalore. Delivery in 15 days from PO confirmation.</field>
+            <field name="warranty_terms">12 months warranty against manufacturing defects</field>
+            <field name="technical_score">92</field>
+            <field name="commercial_score">88</field>
+            <field name="technical_remarks">Excellent technical capability. ISO certified facility. RoHS compliant.</field>
+            <field name="commercial_remarks">Competitive pricing. Good payment terms. Reliable delivery schedule.</field>
+            <field name="evaluation_date" eval="(DateTime.today() - timedelta(days=28)).strftime('%Y-%m-%d')"/>
+            <field name="notes">Best quotation received. Vendor has proven track record.</field>
+        </record>
+
+        <record id="quotation_demo_1_1_line_1" model="vendor.quotation.line">
+            <field name="quotation_id" ref="quotation_demo_1_1"/>
+            <field name="rfq_line_id" ref="rfq_demo_1_line_1"/>
+            <field name="description">Double Layer PCB - FR4 Material</field>
+            <field name="quantity">500</field>
+            <field name="unit_price">450.00</field>
+            <field name="delivery_lead_time">15</field>
+        </record>
+
+        <record id="quotation_demo_1_1_line_2" model="vendor.quotation.line">
+            <field name="quotation_id" ref="quotation_demo_1_1"/>
+            <field name="rfq_line_id" ref="rfq_demo_1_line_2"/>
+            <field name="description">SMT Components - Resistors and Capacitors</field>
+            <field name="quantity">10000</field>
+            <field name="unit_price">2.50</field>
+            <field name="delivery_lead_time">15</field>
+        </record>
+
+        <!-- ========================================
+             PURCHASE ORDER #1 - From RFQ #1
+        ======================================== -->
+
+        <record id="po_demo_1" model="vendor.purchase.order">
+            <field name="name">PO/2024/0001</field>
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="rfq_id" ref="rfq_demo_1"/>
+            <field name="quotation_id" ref="quotation_demo_1_1"/>
+            <field name="date_order" eval="(DateTime.today() - timedelta(days=25)).strftime('%Y-%m-%d')"/>
+            <field name="date_planned" eval="(DateTime.today() - timedelta(days=10)).strftime('%Y-%m-%d')"/>
+            <field name="date_delivered" eval="(DateTime.today() - timedelta(days=8)).strftime('%Y-%m-%d')"/>
+            <field name="state">received</field>
+            <field name="notes">Urgent requirement for Q1 production. Expedited shipping approved.</field>
+        </record>
+
+        <record id="po_demo_1_line_1" model="vendor.purchase.order.line">
+            <field name="po_id" ref="po_demo_1"/>
+            <field name="sequence">10</field>
+            <field name="description">Double Layer PCB - FR4 Material</field>
+            <field name="quantity">500</field>
+            <field name="qty_received">500</field>
+            <field name="unit_price">450.00</field>
+        </record>
+
+        <record id="po_demo_1_line_2" model="vendor.purchase.order.line">
+            <field name="po_id" ref="po_demo_1"/>
+            <field name="sequence">20</field>
+            <field name="description">SMT Components - Resistors and Capacitors</field>
+            <field name="quantity">10000</field>
+            <field name="qty_received">10000</field>
+            <field name="unit_price">2.50</field>
+        </record>
+
+        <!-- ========================================
+             GRN #1 - Goods Receipt for PO #1
+        ======================================== -->
+
+        <record id="grn_demo_1" model="vendor.grn">
+            <field name="name">GRN/2024/0001</field>
+            <field name="po_id" ref="po_demo_1"/>
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="grn_date" eval="(DateTime.today() - timedelta(days=8)).strftime('%Y-%m-%d')"/>
+            <field name="state">accepted</field>
+            <field name="delivery_challan_number">DC/PE/2024/567</field>
+            <field name="delivery_challan_date" eval="(DateTime.today() - timedelta(days=9)).strftime('%Y-%m-%d')"/>
+            <field name="received_by">Ramesh Kumar - Stores</field>
+            <field name="inspection_required">True</field>
+            <field name="inspection_status">passed</field>
+            <field name="notes">All items received in good condition. Inspection passed.</field>
+        </record>
+
+        <record id="grn_demo_1_line_1" model="vendor.grn.line">
+            <field name="grn_id" ref="grn_demo_1"/>
+            <field name="po_line_id" ref="po_demo_1_line_1"/>
+            <field name="description">Double Layer PCB - FR4 Material</field>
+            <field name="quantity_ordered">500</field>
+            <field name="quantity_received">500</field>
+            <field name="quantity_accepted">500</field>
+            <field name="quantity_rejected">0</field>
+            <field name="status">accepted</field>
+        </record>
+
+        <record id="grn_demo_1_line_2" model="vendor.grn.line">
+            <field name="grn_id" ref="grn_demo_1"/>
+            <field name="po_line_id" ref="po_demo_1_line_2"/>
+            <field name="description">SMT Components - Resistors and Capacitors</field>
+            <field name="quantity_ordered">10000</field>
+            <field name="quantity_received">10000</field>
+            <field name="quantity_accepted">10000</field>
+            <field name="quantity_rejected">0</field>
+            <field name="status">accepted</field>
+        </record>
+
+        <!-- Inspection Report for GRN #1 -->
+        <record id="inspection_report_1" model="vendor.inspection.report">
+            <field name="grn_id" ref="grn_demo_1"/>
+            <field name="inspection_date" eval="(DateTime.today() - timedelta(days=7)).strftime('%Y-%m-%d')"/>
+            <field name="result">passed</field>
+            <field name="findings">Visual inspection: OK. Dimensional check: Within tolerance. Electrical testing: All passed.</field>
+            <field name="remarks">No defects found. Material certified for production use.</field>
+        </record>
+
+        <!-- ========================================
+             INVOICE #1 - For PO #1
+        ======================================== -->
+
+        <record id="invoice_demo_1" model="vendor.invoice">
+            <field name="name">INV/PE/2024/1234</field>
+            <field name="po_id" ref="po_demo_1"/>
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="invoice_date" eval="(DateTime.today() - timedelta(days=7)).strftime('%Y-%m-%d')"/>
+            <field name="due_date" eval="(DateTime.today() + timedelta(days=23)).strftime('%Y-%m-%d')"/>
+            <field name="state">approved</field>
+            <field name="verified_by_id" ref="base.user_admin"/>
+            <field name="verified_date" eval="(DateTime.today() - timedelta(days=5)).strftime('%Y-%m-%d')"/>
+            <field name="approved_by_id" ref="base.user_admin"/>
+            <field name="approval_date" eval="(DateTime.today() - timedelta(days=3)).strftime('%Y-%m-%d')"/>
+            <field name="notes">Invoice verified against GRN. Approved for payment.</field>
+        </record>
+
+        <record id="invoice_demo_1_line_1" model="vendor.invoice.line">
+            <field name="invoice_id" ref="invoice_demo_1"/>
+            <field name="description">Double Layer PCB - FR4 Material</field>
+            <field name="quantity">500</field>
+            <field name="unit_price">450.00</field>
+        </record>
+
+        <record id="invoice_demo_1_line_2" model="vendor.invoice.line">
+            <field name="invoice_id" ref="invoice_demo_1"/>
+            <field name="description">SMT Components - Resistors and Capacitors</field>
+            <field name="quantity">10000</field>
+            <field name="unit_price">2.50</field>
+        </record>
+
+        <!-- ========================================
+             RFQ #2 - Machining Services (In Progress)
+        ======================================== -->
+
+        <record id="rfq_demo_2" model="vendor.rfq">
+            <field name="name">RFQ/2024/0002</field>
+            <field name="date_created" eval="(DateTime.today() - timedelta(days=20)).strftime('%Y-%m-%d')"/>
+            <field name="deadline" eval="(DateTime.today() + timedelta(days=5)).strftime('%Y-%m-%d')"/>
+            <field name="category_id" ref="vendor_category_manufacturing"/>
+            <field name="vendor_ids" eval="[(6, 0, [ref('vendor_demo_2'), ref('vendor_demo_3')])]"/>
+            <field name="state">quoted</field>
+            <field name="description">CNC machined components for assembly line</field>
+            <field name="technical_specifications">Material: SS304, Tolerance: ±0.05mm, Surface finish: Ra 1.6</field>
+            <field name="terms_conditions">Payment: Net 45 days. Delivery: Ex-works. Inspection: Mandatory</field>
+        </record>
+
+        <record id="rfq_demo_2_line_1" model="vendor.rfq.line">
+            <field name="rfq_id" ref="rfq_demo_2"/>
+            <field name="sequence">10</field>
+            <field name="description">Shaft - Stainless Steel 304</field>
+            <field name="quantity">200</field>
+            <field name="delivery_date_required" eval="(DateTime.today() + timedelta(days=30)).strftime('%Y-%m-%d')"/>
+            <field name="specifications">Diameter: 25mm, Length: 150mm, Tolerance: ±0.05mm</field>
+        </record>
+
+        <record id="rfq_demo_2_line_2" model="vendor.rfq.line">
+            <field name="rfq_id" ref="rfq_demo_2"/>
+            <field name="sequence">20</field>
+            <field name="description">Flange - Stainless Steel 304</field>
+            <field name="quantity">200</field>
+            <field name="delivery_date_required" eval="(DateTime.today() + timedelta(days=30)).strftime('%Y-%m-%d')"/>
+            <field name="specifications">OD: 80mm, ID: 26mm, Thickness: 10mm, 4 holes M8</field>
+        </record>
+
+        <!-- Quotation from Vendor 2 (Under Evaluation) -->
+        <record id="quotation_demo_2_1" model="vendor.quotation">
+            <field name="name">QTN/2024/0002</field>
+            <field name="rfq_id" ref="rfq_demo_2"/>
+            <field name="vendor_id" ref="vendor_demo_2"/>
+            <field name="date_submitted" eval="(DateTime.today() - timedelta(days=5)).strftime('%Y-%m-%d')"/>
+            <field name="valid_until" eval="(DateTime.today() + timedelta(days=25)).strftime('%Y-%m-%d')"/>
+            <field name="state">under_evaluation</field>
+            <field name="evaluation_status">in_progress</field>
+            <field name="payment_terms">Net 45 days</field>
+            <field name="delivery_terms">Ex-works Faridabad. 30 days delivery.</field>
+            <field name="warranty_terms">6 months against manufacturing defects</field>
+            <field name="technical_score">78</field>
+            <field name="commercial_score">82</field>
+            <field name="technical_remarks">Good machining capability. ISO certified. Some concerns about tight tolerance achievement.</field>
+            <field name="commercial_remarks">Competitive pricing. Standard payment terms.</field>
+        </record>
+
+        <record id="quotation_demo_2_1_line_1" model="vendor.quotation.line">
+            <field name="quotation_id" ref="quotation_demo_2_1"/>
+            <field name="rfq_line_id" ref="rfq_demo_2_line_1"/>
+            <field name="description">Shaft - Stainless Steel 304</field>
+            <field name="quantity">200</field>
+            <field name="unit_price">350.00</field>
+            <field name="delivery_lead_time">30</field>
+        </record>
+
+        <record id="quotation_demo_2_1_line_2" model="vendor.quotation.line">
+            <field name="quotation_id" ref="quotation_demo_2_1"/>
+            <field name="rfq_line_id" ref="rfq_demo_2_line_2"/>
+            <field name="description">Flange - Stainless Steel 304</field>
+            <field name="quantity">200</field>
+            <field name="unit_price">280.00</field>
+            <field name="delivery_lead_time">30</field>
+        </record>
+
+        <!-- Quotation from Vendor 3 (Lower Score) -->
+        <record id="quotation_demo_2_2" model="vendor.quotation">
+            <field name="name">QTN/2024/0003</field>
+            <field name="rfq_id" ref="rfq_demo_2"/>
+            <field name="vendor_id" ref="vendor_demo_3"/>
+            <field name="date_submitted" eval="(DateTime.today() - timedelta(days=3)).strftime('%Y-%m-%d')"/>
+            <field name="valid_until" eval="(DateTime.today() + timedelta(days=27)).strftime('%Y-%m-%d')"/>
+            <field name="state">under_evaluation</field>
+            <field name="evaluation_status">in_progress</field>
+            <field name="payment_terms">50% Advance, 50% on Delivery</field>
+            <field name="delivery_terms">Ex-works Ahmedabad. 45 days delivery.</field>
+            <field name="warranty_terms">3 months warranty</field>
+            <field name="technical_score">65</field>
+            <field name="commercial_score">70</field>
+            <field name="technical_remarks">New vendor. Not ISO certified. Needs closer monitoring for precision work.</field>
+            <field name="commercial_remarks">Slightly lower price but advance payment required. Longer delivery time.</field>
+        </record>
+
+        <record id="quotation_demo_2_2_line_1" model="vendor.quotation.line">
+            <field name="quotation_id" ref="quotation_demo_2_2"/>
+            <field name="rfq_line_id" ref="rfq_demo_2_line_1"/>
+            <field name="description">Shaft - Stainless Steel 304</field>
+            <field name="quantity">200</field>
+            <field name="unit_price">320.00</field>
+            <field name="delivery_lead_time">45</field>
+        </record>
+
+        <record id="quotation_demo_2_2_line_2" model="vendor.quotation.line">
+            <field name="quotation_id" ref="quotation_demo_2_2"/>
+            <field name="rfq_line_id" ref="rfq_demo_2_line_2"/>
+            <field name="description">Flange - Stainless Steel 304</field>
+            <field name="quantity">200</field>
+            <field name="unit_price">260.00</field>
+            <field name="delivery_lead_time">45</field>
+        </record>
+
+        <!-- ========================================
+             NCR - Non-Conformance Report (Quality Issue)
+        ======================================== -->
+
+        <record id="ncr_demo_1" model="vendor.ncr">
+            <field name="name">NCR/2024/0001</field>
+            <field name="vendor_id" ref="vendor_demo_2"/>
+            <field name="date_reported" eval="(DateTime.today() - timedelta(days=60)).strftime('%Y-%m-%d')"/>
+            <field name="state">resolved</field>
+            <field name="defect_category">minor</field>
+            <field name="description">Surface finish on 5 shafts found to be Ra 2.5 instead of specified Ra 1.6. Minor scratches observed.</field>
+            <field name="quantity_affected">5</field>
+            <field name="root_cause">Inadequate tool maintenance. Cutting tool was worn beyond acceptable limits.</field>
+            <field name="corrective_action">Vendor implemented tool change schedule. Enhanced inspection at vendor end. Replacement parts provided.</field>
+            <field name="date_notified" eval="(DateTime.today() - timedelta(days=58)).strftime('%Y-%m-%d')"/>
+            <field name="date_resolved" eval="(DateTime.today() - timedelta(days=30)).strftime('%Y-%m-%d')"/>
+            <field name="financial_impact">12500.00</field>
+            <field name="closure_notes">Issue resolved satisfactorily. Vendor has implemented preventive measures.</field>
+        </record>
+
+        <!-- ========================================
+             RFQ #3 - IT Services (Current)
+        ======================================== -->
+
+        <record id="rfq_demo_3" model="vendor.rfq">
+            <field name="name">RFQ/2024/0003</field>
+            <field name="date_created" eval="DateTime.today().strftime('%Y-%m-%d')"/>
+            <field name="deadline" eval="(DateTime.today() + timedelta(days=15)).strftime('%Y-%m-%d')"/>
+            <field name="category_id" ref="vendor_category_it"/>
+            <field name="vendor_ids" eval="[(6, 0, [ref('vendor_demo_4')])]"/>
+            <field name="state">sent</field>
+            <field name="description">Cloud infrastructure setup and migration services</field>
+            <field name="technical_specifications">AWS or Azure platform. 99.9% uptime SLA. 24x7 support required.</field>
+            <field name="terms_conditions">Payment: Monthly billing in arrears. Contract duration: 12 months.</field>
+        </record>
+
+        <record id="rfq_demo_3_line_1" model="vendor.rfq.line">
+            <field name="rfq_id" ref="rfq_demo_3"/>
+            <field name="sequence">10</field>
+            <field name="description">Cloud Infrastructure Setup</field>
+            <field name="quantity">1</field>
+            <field name="delivery_date_required" eval="(DateTime.today() + timedelta(days=30)).strftime('%Y-%m-%d')"/>
+            <field name="specifications">Initial setup, migration of 50 VMs, database migration, network configuration</field>
+        </record>
+
+        <record id="rfq_demo_3_line_2" model="vendor.rfq.line">
+            <field name="rfq_id" ref="rfq_demo_3"/>
+            <field name="sequence">20</field>
+            <field name="description">Managed Services - 12 Months</field>
+            <field name="quantity">12</field>
+            <field name="delivery_date_required" eval="(DateTime.today() + timedelta(days=30)).strftime('%Y-%m-%d')"/>
+            <field name="specifications">24x7 monitoring, patch management, backup management, incident support</field>
+        </record>
+
+        <!-- ========================================
+             PAYMENT RECORD - For Invoice #1
+        ======================================== -->
+
+        <record id="payment_demo_1" model="vendor.payment">
+            <field name="name">PAY/2024/0001</field>
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="invoice_id" ref="invoice_demo_1"/>
+            <field name="payment_date" eval="(DateTime.today() - timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="amount">250000.00</field>
+            <field name="payment_method">neft</field>
+            <field name="state">paid</field>
+            <field name="transaction_reference">NEFT20241106123456</field>
+            <field name="approved_by_id" ref="base.user_admin"/>
+            <field name="notes">Payment processed via NEFT. Transaction confirmed.</field>
+        </record>
+
+        <!-- Vendor Ledger Entry -->
+        <record id="vendor_ledger_1" model="vendor.ledger">
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="transaction_date" eval="(DateTime.today() - timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="transaction_type">payment</field>
+            <field name="reference">PAY/2024/0001</field>
+            <field name="credit_amount">250000.00</field>
+            <field name="debit_amount">0.00</field>
+            <field name="description">Payment against Invoice INV/PE/2024/1234</field>
+        </record>
+
+        <!-- ========================================
+             ADDITIONAL DEMO DATA
+        ======================================== -->
+
+        <!-- Invoice #2 - Pending Payment -->
+        <record id="invoice_demo_2" model="vendor.invoice">
+            <field name="name">INV/SM/2024/789</field>
+            <field name="vendor_id" ref="vendor_demo_2"/>
+            <field name="invoice_date" eval="(DateTime.today() - timedelta(days=10)).strftime('%Y-%m-%d')"/>
+            <field name="due_date" eval="(DateTime.today() + timedelta(days=35)).strftime('%Y-%m-%d')"/>
+            <field name="state">verified</field>
+            <field name="verified_by_id" ref="base.user_admin"/>
+            <field name="verified_date" eval="(DateTime.today() - timedelta(days=5)).strftime('%Y-%m-%d')"/>
+            <field name="notes">Invoice verified. Awaiting approval for payment.</field>
+        </record>
+
+        <record id="invoice_demo_2_line_1" model="vendor.invoice.line">
+            <field name="invoice_id" ref="invoice_demo_2"/>
+            <field name="description">Machined Components - Previous Order</field>
+            <field name="quantity">100</field>
+            <field name="unit_price">450.00</field>
+        </record>
+
+        <!-- NCR #2 - In Progress -->
+        <record id="ncr_demo_2" model="vendor.ncr">
+            <field name="name">NCR/2024/0002</field>
+            <field name="vendor_id" ref="vendor_demo_3"/>
+            <field name="date_reported" eval="(DateTime.today() - timedelta(days=5)).strftime('%Y-%m-%d')"/>
+            <field name="state">in_progress</field>
+            <field name="defect_category">major</field>
+            <field name="description">Wrong material supplied. Ordered SS304 but received SS316. 20 pieces affected.</field>
+            <field name="quantity_affected">20</field>
+            <field name="root_cause">Under investigation. Appears to be material mix-up at vendor warehouse.</field>
+            <field name="corrective_action">Vendor investigating. Replacement material being arranged.</field>
+            <field name="date_notified" eval="(DateTime.today() - timedelta(days=4)).strftime('%Y-%m-%d')"/>
+            <field name="financial_impact">45000.00</field>
+            <field name="closure_notes">Awaiting vendor response and replacement material.</field>
+        </record>
+
     </data>
 </odoo>
