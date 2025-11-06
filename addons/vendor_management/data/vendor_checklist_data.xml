@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Documentation Checklist Items -->
+        <record id="checklist_gst_certificate" model="vendor.checklist.template">
+            <field name="name">GST Registration Certificate</field>
+            <field name="description">Valid GST registration certificate</field>
+            <field name="category">documentation</field>
+            <field name="sequence">10</field>
+            <field name="mandatory">True</field>
+            <field name="requires_document">True</field>
+        </record>
+
+        <record id="checklist_pan_card" model="vendor.checklist.template">
+            <field name="name">PAN Card</field>
+            <field name="description">Copy of PAN card</field>
+            <field name="category">documentation</field>
+            <field name="sequence">20</field>
+            <field name="mandatory">True</field>
+            <field name="requires_document">True</field>
+        </record>
+
+        <record id="checklist_company_registration" model="vendor.checklist.template">
+            <field name="name">Company Registration Certificate</field>
+            <field name="description">Certificate of incorporation/registration</field>
+            <field name="category">documentation</field>
+            <field name="sequence">30</field>
+            <field name="mandatory">True</field>
+            <field name="requires_document">True</field>
+        </record>
+
+        <!-- Quality Checklist Items -->
+        <record id="checklist_iso_certificate" model="vendor.checklist.template">
+            <field name="name">ISO Certification</field>
+            <field name="description">ISO 9001 or relevant quality certification</field>
+            <field name="category">quality</field>
+            <field name="sequence">40</field>
+            <field name="mandatory">False</field>
+            <field name="requires_document">True</field>
+        </record>
+
+        <record id="checklist_quality_policy" model="vendor.checklist.template">
+            <field name="name">Quality Policy Documentation</field>
+            <field name="description">Written quality policy and procedures</field>
+            <field name="category">quality</field>
+            <field name="sequence">50</field>
+            <field name="mandatory">True</field>
+            <field name="requires_document">True</field>
+        </record>
+
+        <!-- Financial Checklist Items -->
+        <record id="checklist_bank_details" model="vendor.checklist.template">
+            <field name="name">Bank Account Details</field>
+            <field name="description">Cancelled cheque or bank statement</field>
+            <field name="category">financial</field>
+            <field name="sequence">60</field>
+            <field name="mandatory">True</field>
+            <field name="requires_document">True</field>
+        </record>
+
+        <record id="checklist_financial_statements" model="vendor.checklist.template">
+            <field name="name">Financial Statements</field>
+            <field name="description">Last 2 years audited financial statements</field>
+            <field name="category">financial</field>
+            <field name="sequence">70</field>
+            <field name="mandatory">False</field>
+            <field name="requires_document">True</field>
+        </record>
+
+        <!-- Technical Capability -->
+        <record id="checklist_capability_list" model="vendor.checklist.template">
+            <field name="name">Capability List</field>
+            <field name="description">List of products/services with technical specifications</field>
+            <field name="category">technical</field>
+            <field name="sequence">80</field>
+            <field name="mandatory">True</field>
+            <field name="requires_document">True</field>
+        </record>
+
+        <record id="checklist_machinery_list" model="vendor.checklist.template">
+            <field name="name">Machinery & Equipment List</field>
+            <field name="description">List of available machinery and equipment</field>
+            <field name="category">technical</field>
+            <field name="sequence">90</field>
+            <field name="vendor_type">machining</field>
+            <field name="mandatory">True</field>
+            <field name="requires_document">True</field>
+        </record>
+
+        <!-- References -->
+        <record id="checklist_client_references" model="vendor.checklist.template">
+            <field name="name">Client References</field>
+            <field name="description">At least 3 client references with contact details</field>
+            <field name="category">references</field>
+            <field name="sequence">100</field>
+            <field name="mandatory">True</field>
+            <field name="requires_document">False</field>
+        </record>
+
+        <!-- Compliance -->
+        <record id="checklist_msme_certificate" model="vendor.checklist.template">
+            <field name="name">MSME Registration (if applicable)</field>
+            <field name="description">MSME/Udyog Aadhaar registration certificate</field>
+            <field name="category">compliance</field>
+            <field name="sequence">110</field>
+            <field name="mandatory">False</field>
+            <field name="requires_document">True</field>
+        </record>
+
+        <record id="checklist_labour_license" model="vendor.checklist.template">
+            <field name="name">Labour License</field>
+            <field name="description">Valid labour license for contractors</field>
+            <field name="category">compliance</field>
+            <field name="vendor_type">contractor</field>
+            <field name="sequence">120</field>
+            <field name="mandatory">True</field>
+            <field name="requires_document">True</field>
+        </record>
+    </data>
+</odoo>

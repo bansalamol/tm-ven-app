@@ -7,34 +7,71 @@
     'category': 'Operations/Vendor Management',
     'summary': 'Manage vendors, supplier relationships, ratings and evaluations',
     'description': """
-Vendor Management System
-========================
-Comprehensive vendor management module for Odoo 19 that helps you:
+Enterprise Vendor Management System
+===================================
+Comprehensive vendor management solution for Odoo 19 with complete procurement workflow:
 
-Main Features
--------------
-* Maintain vendor master data with complete contact information
-* Categorize vendors by type and business area
-* Track vendor ratings and performance evaluations
-* Manage vendor status (active, blocked, on-hold)
-* Store vendor documents and certificates
-* Track payment terms and banking details
-* Multi-company support
-* Advanced search and filtering capabilities
+Core Features
+------------
+* Vendor Registration & Onboarding with approval workflow
+* Document Management (GST, PAN, ISO, certifications)
+* Pre-qualification Checklist System
+* Auto-generated vendor codes and classification
+
+Procurement Management
+---------------------
+* Request for Quotation (RFQ) creation and broadcasting
+* Vendor quotation submission and comparison
+* Technical and commercial evaluation
+* Purchase Order (PO) management
+
+Quality & Compliance
+-------------------
+* Quality ratings and performance tracking
+* Non-Conformance Report (NCR) tracking
+* Goods Receipt Note (GRN) with inspection
+* Certificate management with expiry alerts
+
+Financial Management
+-------------------
+* Invoice submission and verification workflow
+* Payment tracking and approval
+* Vendor ledger and outstanding balance
+* Credit limit management
+
+Advanced Features
+----------------
+* KPI-based vendor performance evaluation
+* Multi-company and multi-currency support
+* Role-based access control
+* Automated notifications and alerts
+* Comprehensive reporting and dashboards
     """,
     'depends': [
         'base',
         'mail',
         'contacts',
+        'product',
+        'uom',
+        'account',
+        'hr',
+        'portal',
     ],
     'data': [
+        # Security
         'security/vendor_management_security.xml',
         'security/ir.model.access.csv',
+
+        # Data
+        'data/vendor_sequences.xml',
+        'data/vendor_category_data.xml',
+        'data/vendor_checklist_data.xml',
+
+        # Views - will be added incrementally
         'views/vendor_category_views.xml',
         'views/vendor_rating_views.xml',
         'views/vendor_views.xml',
         'views/vendor_menus.xml',
-        'data/vendor_category_data.xml',
     ],
     'demo': [
         'data/vendor_demo.xml',
