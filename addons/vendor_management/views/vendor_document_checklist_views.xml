@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Document Form View -->
+    <record id="view_vendor_document_form" model="ir.ui.view">
+        <field name="name">vendor.document.form</field>
+        <field name="model">vendor.document</field>
+        <field name="arch" type="xml">
+            <form string="Vendor Document">
+                <header>
+                    <button name="action_verify" string="Verify" type="object"
+                            invisible="state != 'submitted'" class="oe_highlight"
+                            groups="vendor_management.group_vendor_manager"/>
+                    <button name="action_reject" string="Reject" type="object"
+                            invisible="state != 'submitted'"
+                            groups="vendor_management.group_vendor_manager"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,verified"/>
+                </header>
+                <sheet>
+                    <div class="alert alert-danger" role="alert" invisible="not is_expired">
+                        This document has expired!
+                    </div>
+                    <div class="alert alert-warning" role="alert" invisible="is_expired or days_to_expiry &gt; 30">
+                        This document expires in <field name="days_to_expiry"/> days!
+                    </div>
+                    <group>
+                        <group>
+                            <field name="vendor_id" readonly="state != 'draft'"/>
+                            <field name="name"/>
+                            <field name="document_type"/>
+                            <field name="document_number"/>
+                        </group>
+                        <group>
+                            <field name="issue_date"/>
+                            <field name="expiry_date"/>
+                            <field name="is_expired" invisible="1"/>
+                            <field name="issuing_authority"/>
+                            <field name="attachment_id" widget="many2one_binary"/>
+                        </group>
+                    </group>
+                    <group string="Verification" invisible="state == 'draft'">
+                        <field name="verified"/>
+                        <field name="verified_by_id"/>
+                        <field name="verified_date"/>
+                    </group>
+                    <group>
+                        <field name="notes" placeholder="Additional notes..."/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Document Tree View -->
+    <record id="view_vendor_document_tree" model="ir.ui.view">
+        <field name="name">vendor.document.tree</field>
+        <field name="model">vendor.document</field>
+        <field name="arch" type="xml">
+            <tree string="Documents" sample="1" decoration-danger="is_expired" decoration-warning="days_to_expiry &lt; 30 and not is_expired">
+                <field name="vendor_id"/>
+                <field name="name"/>
+                <field name="document_type"/>
+                <field name="document_number"/>
+                <field name="issue_date"/>
+                <field name="expiry_date"/>
+                <field name="days_to_expiry" optional="show"/>
+                <field name="is_expired" column_invisible="1"/>
+                <field name="verified" widget="boolean_toggle"/>
+                <field name="state" widget="badge"
+                       decoration-info="state == 'draft'"
+                       decoration-primary="state == 'submitted'"
+                       decoration-success="state == 'verified'"
+                       decoration-danger="state in ['rejected', 'expired']"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Document Search View -->
+    <record id="view_vendor_document_search" model="ir.ui.view">
+        <field name="name">vendor.document.search</field>
+        <field name="model">vendor.document</field>
+        <field name="arch" type="xml">
+            <search string="Documents">
+                <field name="name"/>
+                <field name="vendor_id"/>
+                <field name="document_type"/>
+                <separator/>
+                <filter string="Verified" name="filter_verified" domain="[('verified', '=', True)]"/>
+                <filter string="Not Verified" name="filter_not_verified" domain="[('verified', '=', False)]"/>
+                <filter string="Expired" name="filter_expired" domain="[('is_expired', '=', True)]"/>
+                <filter string="Expiring Soon" name="filter_expiring" domain="[('days_to_expiry', '&lt;', 30), ('is_expired', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Vendor" name="group_vendor" context="{'group_by': 'vendor_id'}"/>
+                    <filter string="Document Type" name="group_type" context="{'group_by': 'document_type'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Document Action -->
+    <record id="action_vendor_document" model="ir.actions.act_window">
+        <field name="name">Vendor Documents</field>
+        <field name="res_model">vendor.document</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No documents uploaded yet
+            </p>
+        </field>
+    </record>
+
+    <!-- Checklist Template Tree View -->
+    <record id="view_vendor_checklist_template_tree" model="ir.ui.view">
+        <field name="name">vendor.checklist.template.tree</field>
+        <field name="model">vendor.checklist.template</field>
+        <field name="arch" type="xml">
+            <tree string="Checklist Templates" sample="1">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="category"/>
+                <field name="vendor_type"/>
+                <field name="mandatory" widget="boolean_toggle"/>
+                <field name="requires_document" widget="boolean_toggle"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Checklist Template Form View -->
+    <record id="view_vendor_checklist_template_form" model="ir.ui.view">
+        <field name="name">vendor.checklist.template.form</field>
+        <field name="model">vendor.checklist.template</field>
+        <field name="arch" type="xml">
+            <form string="Checklist Template">
+                <sheet>
+                    <group>
+                        <field name="active" widget="boolean_toggle"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="category"/>
+                            <field name="vendor_type"/>
+                            <field name="sequence"/>
+                        </group>
+                        <group>
+                            <field name="mandatory"/>
+                            <field name="requires_document"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" placeholder="Detailed description of this checklist item..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Checklist Template Action -->
+    <record id="action_vendor_checklist_template" model="ir.actions.act_window">
+        <field name="name">Checklist Templates</field>
+        <field name="res_model">vendor.checklist.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create checklist templates
+            </p>
+        </field>
+    </record>
+
+    <!-- Vendor Checklist Tree View (embedded in vendor form) -->
+    <record id="view_vendor_checklist_tree" model="ir.ui.view">
+        <field name="name">vendor.checklist.tree</field>
+        <field name="model">vendor.checklist</field>
+        <field name="arch" type="xml">
+            <tree string="Checklist" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="category"/>
+                <field name="completed" widget="boolean_toggle"/>
+                <field name="completed_by_id"/>
+                <field name="completed_date"/>
+                <field name="remarks"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
