@@ -1,0 +1,11 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_vendor_user,vendor.vendor.user,model_vendor_vendor,group_vendor_user,1,1,1,0
+access_vendor_manager,vendor.vendor.manager,model_vendor_vendor,group_vendor_manager,1,1,1,1
+access_vendor_category_user,vendor.category.user,model_vendor_category,group_vendor_user,1,0,0,0
+access_vendor_category_manager,vendor.category.manager,model_vendor_category,group_vendor_manager,1,1,1,1
+access_vendor_rating_user,vendor.rating.user,model_vendor_rating,group_vendor_user,1,1,1,0
+access_vendor_rating_manager,vendor.rating.manager,model_vendor_rating,group_vendor_manager,1,1,1,1
+access_vendor_tag_user,vendor.tag.user,model_vendor_tag,group_vendor_user,1,0,0,0
+access_vendor_tag_manager,vendor.tag.manager,model_vendor_tag,group_vendor_manager,1,1,1,1
+access_vendor_bank_account_user,vendor.bank.account.user,model_vendor_bank_account,group_vendor_user,1,1,1,0
+access_vendor_bank_account_manager,vendor.bank.account.manager,model_vendor_bank_account,group_vendor_manager,1,1,1,1

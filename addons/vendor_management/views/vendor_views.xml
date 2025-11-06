@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vendor Form View -->
+    <record id="view_vendor_form" model="ir.ui.view">
+        <field name="name">vendor.vendor.form</field>
+        <field name="model">vendor.vendor</field>
+        <field name="arch" type="xml">
+            <form string="Vendor">
+                <header>
+                    <button name="action_set_active" string="Set Active" type="object"
+                            invisible="status == 'active'" class="oe_highlight"/>
+                    <button name="action_set_on_hold" string="Set On Hold" type="object"
+                            invisible="status == 'on_hold'"/>
+                    <button name="action_set_blocked" string="Block" type="object"
+                            invisible="status == 'blocked'" class="btn-danger"/>
+                    <field name="status" widget="statusbar" statusbar_visible="potential,active"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_ratings" type="object" class="oe_stat_button" icon="fa-star">
+                            <field name="rating_count" widget="statinfo" string="Ratings"/>
+                        </button>
+                    </div>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Vendor Name" required="1"/>
+                        </h1>
+                        <h3>
+                            <field name="code" placeholder="Vendor Code" required="1"/>
+                        </h3>
+                    </div>
+                    <group>
+                        <group string="Basic Information">
+                            <field name="category_id"/>
+                            <field name="vendor_type"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            <field name="date_joined"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group string="Rating Information">
+                            <field name="average_rating" widget="progressbar"/>
+                            <field name="rating_count"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Contact Information" name="contact">
+                            <group>
+                                <group string="Contact Details">
+                                    <field name="contact_person"/>
+                                    <field name="phone" widget="phone"/>
+                                    <field name="mobile" widget="phone"/>
+                                    <field name="email" widget="email"/>
+                                    <field name="website" widget="url"/>
+                                </group>
+                                <group string="Address">
+                                    <label for="street" string="Address"/>
+                                    <div class="o_address_format">
+                                        <field name="street" placeholder="Street..." class="o_address_street"/>
+                                        <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                        <div class="o_address_city">
+                                            <field name="city" placeholder="City" class="o_address_city"/>
+                                            <field name="state_id" class="o_address_state" placeholder="State"
+                                                   options="{'no_open': True, 'no_create': True}"/>
+                                            <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                        </div>
+                                        <field name="country_id" placeholder="Country" class="o_address_country"
+                                               options="{'no_open': True, 'no_create': True}"/>
+                                    </div>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Business Information" name="business">
+                            <group>
+                                <group string="Legal Information">
+                                    <field name="vat"/>
+                                    <field name="tax_id"/>
+                                    <field name="registration_number"/>
+                                </group>
+                                <group string="Payment Information">
+                                    <field name="payment_term_id"/>
+                                    <field name="currency_id" groups="base.group_multi_currency"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Bank Accounts" name="bank_accounts">
+                            <field name="bank_ids">
+                                <tree editable="bottom">
+                                    <field name="bank_name"/>
+                                    <field name="account_number"/>
+                                    <field name="account_holder_name"/>
+                                    <field name="bank_code"/>
+                                    <field name="iban"/>
+                                    <field name="branch"/>
+                                    <field name="is_primary"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Ratings" name="ratings">
+                            <field name="rating_ids">
+                                <tree>
+                                    <field name="rating_date"/>
+                                    <field name="rated_by_id"/>
+                                    <field name="quality_rating"/>
+                                    <field name="delivery_rating"/>
+                                    <field name="service_rating"/>
+                                    <field name="pricing_rating"/>
+                                    <field name="overall_rating" widget="progressbar"/>
+                                    <field name="state" widget="badge" decoration-success="state == 'confirmed'"
+                                           decoration-info="state == 'draft'" decoration-muted="state == 'cancelled'"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Statistics" name="statistics">
+                            <group>
+                                <group>
+                                    <field name="total_purchases" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                    <field name="purchase_count"/>
+                                </group>
+                                <group>
+                                    <field name="last_purchase_date"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <group>
+                                <field name="notes" placeholder="Public notes visible to everyone..."/>
+                                <field name="internal_notes" placeholder="Internal notes for company use only..."
+                                       groups="vendor_management.group_vendor_manager"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vendor Tree View -->
+    <record id="view_vendor_tree" model="ir.ui.view">
+        <field name="name">vendor.vendor.tree</field>
+        <field name="model">vendor.vendor</field>
+        <field name="arch" type="xml">
+            <tree string="Vendors" sample="1" multi_edit="1">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="vendor_type"/>
+                <field name="contact_person"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="city"/>
+                <field name="country_id"/>
+                <field name="average_rating" widget="progressbar" optional="show"/>
+                <field name="status" widget="badge"
+                       decoration-success="status == 'active'"
+                       decoration-warning="status == 'on_hold'"
+                       decoration-danger="status == 'blocked'"
+                       decoration-info="status == 'potential'"/>
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vendor Kanban View -->
+    <record id="view_vendor_kanban" model="ir.ui.view">
+        <field name="name">vendor.vendor.kanban</field>
+        <field name="model">vendor.vendor</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" sample="1">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="category_id"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="status"/>
+                <field name="average_rating"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_record_top">
+                                <div class="o_kanban_record_headings">
+                                    <strong class="o_kanban_record_title">
+                                        <field name="name"/>
+                                    </strong>
+                                    <div class="o_kanban_record_subtitle">
+                                        <field name="code"/> - <field name="category_id"/>
+                                    </div>
+                                </div>
+                                <div class="o_dropdown_kanban dropdown">
+                                    <a class="dropdown-toggle o-no-caret btn" role="button" data-bs-toggle="dropdown"
+                                       href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                        <span class="fa fa-ellipsis-v"/>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu">
+                                        <a role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                                        <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                <div t-if="record.phone.raw_value">
+                                    <i class="fa fa-phone" role="img" aria-label="Phone" title="Phone"/>
+                                    <field name="phone"/>
+                                </div>
+                                <div t-if="record.email.raw_value">
+                                    <i class="fa fa-envelope" role="img" aria-label="Email" title="Email"/>
+                                    <field name="email"/>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_bottom">
+                                <div class="oe_kanban_bottom_left">
+                                    <field name="average_rating" widget="priority"/>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <field name="status" widget="label_selection"
+                                           options="{'classes': {'active': 'success', 'on_hold': 'warning',
+                                                                 'blocked': 'danger', 'potential': 'info'}}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Vendor Search View -->
+    <record id="view_vendor_search" model="ir.ui.view">
+        <field name="name">vendor.vendor.search</field>
+        <field name="model">vendor.vendor</field>
+        <field name="arch" type="xml">
+            <search string="Vendors">
+                <field name="name" string="Vendor" filter_domain="['|', ('name', 'ilike', self), ('code', 'ilike', self)]"/>
+                <field name="category_id"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="city"/>
+                <field name="country_id"/>
+                <separator/>
+                <filter string="Active" name="filter_active" domain="[('status', '=', 'active')]"/>
+                <filter string="On Hold" name="filter_on_hold" domain="[('status', '=', 'on_hold')]"/>
+                <filter string="Blocked" name="filter_blocked" domain="[('status', '=', 'blocked')]"/>
+                <filter string="Potential" name="filter_potential" domain="[('status', '=', 'potential')]"/>
+                <separator/>
+                <filter string="Goods Supplier" name="filter_goods" domain="[('vendor_type', '=', 'goods')]"/>
+                <filter string="Service Provider" name="filter_services" domain="[('vendor_type', '=', 'services')]"/>
+                <filter string="Contractor" name="filter_contractor" domain="[('vendor_type', '=', 'contractor')]"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Category" name="group_category" context="{'group_by': 'category_id'}"/>
+                    <filter string="Vendor Type" name="group_vendor_type" context="{'group_by': 'vendor_type'}"/>
+                    <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
+                    <filter string="Country" name="group_country" context="{'group_by': 'country_id'}"/>
+                    <filter string="Company" name="group_company" context="{'group_by': 'company_id'}"
+                            groups="base.group_multi_company"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Vendor Action -->
+    <record id="action_vendor" model="ir.actions.act_window">
+        <field name="name">Vendors</field>
+        <field name="res_model">vendor.vendor</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{'search_default_filter_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first vendor
+            </p>
+            <p>
+                Track and manage your vendors, suppliers, and service providers.
+            </p>
+        </field>
+    </record>
+</odoo>

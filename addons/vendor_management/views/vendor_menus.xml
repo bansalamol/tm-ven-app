@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Menu -->
+    <menuitem id="menu_vendor_management_root"
+              name="Vendor Management"
+              sequence="50"
+              web_icon="vendor_management,static/description/icon.png"/>
+
+    <!-- Vendors Menu -->
+    <menuitem id="menu_vendors"
+              name="Vendors"
+              parent="menu_vendor_management_root"
+              action="action_vendor"
+              sequence="10"/>
+
+    <!-- Configuration Menu -->
+    <menuitem id="menu_vendor_configuration"
+              name="Configuration"
+              parent="menu_vendor_management_root"
+              sequence="100"
+              groups="vendor_management.group_vendor_manager"/>
+
+    <menuitem id="menu_vendor_categories"
+              name="Vendor Categories"
+              parent="menu_vendor_configuration"
+              action="action_vendor_category"
+              sequence="10"/>
+
+    <!-- Ratings Menu -->
+    <menuitem id="menu_vendor_ratings"
+              name="Ratings"
+              parent="menu_vendor_management_root"
+              action="action_vendor_rating"
+              sequence="20"/>
+</odoo>

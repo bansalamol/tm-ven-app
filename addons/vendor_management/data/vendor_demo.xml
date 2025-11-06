@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Demo Vendors -->
+        <record id="vendor_demo_1" model="vendor.vendor">
+            <field name="name">TechSupply Corp</field>
+            <field name="code">VEN001</field>
+            <field name="category_id" ref="vendor_category_electronics"/>
+            <field name="vendor_type">goods</field>
+            <field name="status">active</field>
+            <field name="contact_person">John Smith</field>
+            <field name="phone">+1-555-0100</field>
+            <field name="email">contact@techsupply.com</field>
+            <field name="website">www.techsupply.com</field>
+            <field name="street">123 Tech Street</field>
+            <field name="city">San Francisco</field>
+            <field name="zip">94102</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="vat">US123456789</field>
+            <field name="tag_ids" eval="[(6, 0, [ref('vendor_tag_preferred'), ref('vendor_tag_certified')])]"/>
+            <field name="notes">Reliable supplier of electronic components</field>
+        </record>
+
+        <record id="vendor_demo_2" model="vendor.vendor">
+            <field name="name">Global Materials Ltd</field>
+            <field name="code">VEN002</field>
+            <field name="category_id" ref="vendor_category_raw_materials"/>
+            <field name="vendor_type">goods</field>
+            <field name="status">active</field>
+            <field name="contact_person">Maria Garcia</field>
+            <field name="phone">+44-20-1234-5678</field>
+            <field name="email">info@globalmaterials.co.uk</field>
+            <field name="website">www.globalmaterials.co.uk</field>
+            <field name="street">456 Industrial Way</field>
+            <field name="city">London</field>
+            <field name="zip">SW1A 1AA</field>
+            <field name="country_id" ref="base.uk"/>
+            <field name="vat">GB987654321</field>
+            <field name="tag_ids" eval="[(6, 0, [ref('vendor_tag_international')])]"/>
+            <field name="notes">International supplier of raw materials</field>
+        </record>
+
+        <record id="vendor_demo_3" model="vendor.vendor">
+            <field name="name">Swift Logistics</field>
+            <field name="code">VEN003</field>
+            <field name="category_id" ref="vendor_category_logistics"/>
+            <field name="vendor_type">services</field>
+            <field name="status">active</field>
+            <field name="contact_person">Robert Chen</field>
+            <field name="phone">+1-555-0200</field>
+            <field name="email">dispatch@swiftlogistics.com</field>
+            <field name="website">www.swiftlogistics.com</field>
+            <field name="street">789 Freight Avenue</field>
+            <field name="city">Los Angeles</field>
+            <field name="zip">90001</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="vat">US555555555</field>
+            <field name="tag_ids" eval="[(6, 0, [ref('vendor_tag_preferred'), ref('vendor_tag_local')])]"/>
+            <field name="notes">Fast and reliable logistics partner</field>
+        </record>
+
+        <record id="vendor_demo_4" model="vendor.vendor">
+            <field name="name">BuildPro Construction</field>
+            <field name="code">VEN004</field>
+            <field name="category_id" ref="vendor_category_construction"/>
+            <field name="vendor_type">contractor</field>
+            <field name="status">potential</field>
+            <field name="contact_person">Sarah Johnson</field>
+            <field name="phone">+1-555-0300</field>
+            <field name="email">projects@buildpro.com</field>
+            <field name="website">www.buildpro.com</field>
+            <field name="street">321 Construction Blvd</field>
+            <field name="city">Chicago</field>
+            <field name="zip">60601</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="vat">US777777777</field>
+            <field name="tag_ids" eval="[(6, 0, [ref('vendor_tag_local')])]"/>
+            <field name="notes">Potential contractor for construction projects</field>
+        </record>
+
+        <record id="vendor_demo_5" model="vendor.vendor">
+            <field name="name">TechConsult Solutions</field>
+            <field name="code">VEN005</field>
+            <field name="category_id" ref="vendor_category_it"/>
+            <field name="vendor_type">consultant</field>
+            <field name="status">active</field>
+            <field name="contact_person">David Lee</field>
+            <field name="phone">+1-555-0400</field>
+            <field name="email">info@techconsult.com</field>
+            <field name="website">www.techconsult.com</field>
+            <field name="street">555 Silicon Valley Drive</field>
+            <field name="city">Palo Alto</field>
+            <field name="zip">94301</field>
+            <field name="country_id" ref="base.us"/>
+            <field name="vat">US888888888</field>
+            <field name="tag_ids" eval="[(6, 0, [ref('vendor_tag_certified')])]"/>
+            <field name="notes">IT consulting and software development</field>
+        </record>
+
+        <!-- Demo Bank Accounts -->
+        <record id="vendor_bank_demo_1" model="vendor.bank.account">
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="bank_name">Bank of America</field>
+            <field name="account_number">1234567890</field>
+            <field name="account_holder_name">TechSupply Corp</field>
+            <field name="bank_code">BOFAUS3N</field>
+            <field name="is_primary">True</field>
+        </record>
+
+        <record id="vendor_bank_demo_2" model="vendor.bank.account">
+            <field name="vendor_id" ref="vendor_demo_2"/>
+            <field name="bank_name">Barclays Bank</field>
+            <field name="account_number">GB29NWBK60161331926819</field>
+            <field name="account_holder_name">Global Materials Ltd</field>
+            <field name="bank_code">BARCGB22</field>
+            <field name="iban">GB29NWBK60161331926819</field>
+            <field name="is_primary">True</field>
+        </record>
+
+        <!-- Demo Vendor Ratings -->
+        <record id="vendor_rating_demo_1" model="vendor.rating">
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="rating_date" eval="(DateTime.today() - timedelta(days=30)).strftime('%Y-%m-%d')"/>
+            <field name="quality_rating">5</field>
+            <field name="delivery_rating">5</field>
+            <field name="service_rating">4</field>
+            <field name="pricing_rating">4</field>
+            <field name="notes">Excellent quality and timely delivery</field>
+            <field name="state">confirmed</field>
+        </record>
+
+        <record id="vendor_rating_demo_2" model="vendor.rating">
+            <field name="vendor_id" ref="vendor_demo_1"/>
+            <field name="rating_date" eval="(DateTime.today() - timedelta(days=60)).strftime('%Y-%m-%d')"/>
+            <field name="quality_rating">5</field>
+            <field name="delivery_rating">4</field>
+            <field name="service_rating">5</field>
+            <field name="pricing_rating">4</field>
+            <field name="notes">Very satisfied with the products</field>
+            <field name="state">confirmed</field>
+        </record>
+
+        <record id="vendor_rating_demo_3" model="vendor.rating">
+            <field name="vendor_id" ref="vendor_demo_2"/>
+            <field name="rating_date" eval="(DateTime.today() - timedelta(days=45)).strftime('%Y-%m-%d')"/>
+            <field name="quality_rating">4</field>
+            <field name="delivery_rating">3</field>
+            <field name="service_rating">4</field>
+            <field name="pricing_rating">5</field>
+            <field name="notes">Good materials but delivery could be improved</field>
+            <field name="state">confirmed</field>
+        </record>
+
+        <record id="vendor_rating_demo_4" model="vendor.rating">
+            <field name="vendor_id" ref="vendor_demo_3"/>
+            <field name="rating_date" eval="(DateTime.today() - timedelta(days=15)).strftime('%Y-%m-%d')"/>
+            <field name="quality_rating">5</field>
+            <field name="delivery_rating">5</field>
+            <field name="service_rating">5</field>
+            <field name="pricing_rating">4</field>
+            <field name="notes">Fastest delivery service we've used</field>
+            <field name="state">confirmed</field>
+        </record>
+    </data>
+</odoo>

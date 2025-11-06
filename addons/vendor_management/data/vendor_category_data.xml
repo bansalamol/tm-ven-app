@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Vendor Categories -->
+        <record id="vendor_category_electronics" model="vendor.category">
+            <field name="name">Electronics</field>
+            <field name="code">ELEC</field>
+            <field name="color">1</field>
+        </record>
+
+        <record id="vendor_category_raw_materials" model="vendor.category">
+            <field name="name">Raw Materials</field>
+            <field name="code">RAW</field>
+            <field name="color">2</field>
+        </record>
+
+        <record id="vendor_category_services" model="vendor.category">
+            <field name="name">Services</field>
+            <field name="code">SERV</field>
+            <field name="color">3</field>
+        </record>
+
+        <record id="vendor_category_it" model="vendor.category">
+            <field name="name">IT Services</field>
+            <field name="code">IT</field>
+            <field name="parent_id" ref="vendor_category_services"/>
+            <field name="color">4</field>
+        </record>
+
+        <record id="vendor_category_consulting" model="vendor.category">
+            <field name="name">Consulting</field>
+            <field name="code">CONS</field>
+            <field name="parent_id" ref="vendor_category_services"/>
+            <field name="color">5</field>
+        </record>
+
+        <record id="vendor_category_construction" model="vendor.category">
+            <field name="name">Construction</field>
+            <field name="code">CONST</field>
+            <field name="color">6</field>
+        </record>
+
+        <record id="vendor_category_logistics" model="vendor.category">
+            <field name="name">Logistics & Transportation</field>
+            <field name="code">LOG</field>
+            <field name="color">7</field>
+        </record>
+
+        <record id="vendor_category_packaging" model="vendor.category">
+            <field name="name">Packaging</field>
+            <field name="code">PACK</field>
+            <field name="color">8</field>
+        </record>
+
+        <!-- Vendor Tags -->
+        <record id="vendor_tag_preferred" model="vendor.tag">
+            <field name="name">Preferred Vendor</field>
+            <field name="color">10</field>
+        </record>
+
+        <record id="vendor_tag_certified" model="vendor.tag">
+            <field name="name">Certified</field>
+            <field name="color">3</field>
+        </record>
+
+        <record id="vendor_tag_local" model="vendor.tag">
+            <field name="name">Local</field>
+            <field name="color">4</field>
+        </record>
+
+        <record id="vendor_tag_international" model="vendor.tag">
+            <field name="name">International</field>
+            <field name="color">1</field>
+        </record>
+    </data>
+</odoo>

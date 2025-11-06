@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Security Groups -->
+    <record model="res.groups.privilege" id="res_groups_privilege_vendor_management">
+        <field name="name">Vendor Management</field>
+        <field name="sequence">30</field>
+        <field name="category_id" ref="base.module_category_operations"/>
+    </record>
+
+    <record id="group_vendor_user" model="res.groups">
+        <field name="name">User: Manage vendors and view ratings</field>
+        <field name="sequence">10</field>
+        <field name="privilege_id" ref="res_groups_privilege_vendor_management"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="group_vendor_manager" model="res.groups">
+        <field name="name">Administrator: Full vendor management access</field>
+        <field name="sequence">20</field>
+        <field name="implied_ids" eval="[(4, ref('group_vendor_user'))]"/>
+        <field name="privilege_id" ref="res_groups_privilege_vendor_management"/>
+        <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <!-- Record Rules -->
+    <data noupdate="1">
+        <!-- Multi-company rules -->
+        <record id="vendor_rule_multi_company" model="ir.rule">
+            <field name="name">Vendor: Multi-Company</field>
+            <field name="model_id" ref="model_vendor_vendor"/>
+            <field name="domain_force">[('company_id', 'in', company_ids + [False])]</field>
+        </record>
+
+        <!-- Manager has full access -->
+        <record id="vendor_rule_manager" model="ir.rule">
+            <field name="name">Vendor: Manager has full access</field>
+            <field name="model_id" ref="model_vendor_vendor"/>
+            <field name="groups" eval="[Command.link(ref('group_vendor_manager'))]"/>
+        </record>
+
+        <record id="vendor_rating_rule_manager" model="ir.rule">
+            <field name="name">Vendor Rating: Manager has full access</field>
+            <field name="model_id" ref="model_vendor_rating"/>
+            <field name="groups" eval="[Command.link(ref('group_vendor_manager'))]"/>
+        </record>
+
+        <record id="vendor_category_rule_manager" model="ir.rule">
+            <field name="name">Vendor Category: Manager has full access</field>
+            <field name="model_id" ref="model_vendor_category"/>
+            <field name="groups" eval="[Command.link(ref('group_vendor_manager'))]"/>
+        </record>
+
+        <!-- User access rules -->
+        <record id="vendor_rule_user" model="ir.rule">
+            <field name="name">Vendor: User can read and create</field>
+            <field name="model_id" ref="model_vendor_vendor"/>
+            <field name="groups" eval="[Command.link(ref('group_vendor_user'))]"/>
+        </record>
+
+        <record id="vendor_rating_rule_user" model="ir.rule">
+            <field name="name">Vendor Rating: User can read and create</field>
+            <field name="model_id" ref="model_vendor_rating"/>
+            <field name="groups" eval="[Command.link(ref('group_vendor_user'))]"/>
+        </record>
+    </data>
+</odoo>

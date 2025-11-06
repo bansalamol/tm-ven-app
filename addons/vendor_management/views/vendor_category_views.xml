@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vendor Category Form View -->
+    <record id="view_vendor_category_form" model="ir.ui.view">
+        <field name="name">vendor.category.form</field>
+        <field name="model">vendor.category</field>
+        <field name="arch" type="xml">
+            <form string="Vendor Category">
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="action" name="%(action_vendor)d"
+                                context="{'search_default_category_id': active_id}" icon="fa-users">
+                            <field string="Vendors" name="vendor_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" string="Category Name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g., Electronics Supplier"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="parent_id"/>
+                        </group>
+                        <group>
+                            <field name="color" widget="color_picker"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" placeholder="Description of this category..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vendor Category Tree View -->
+    <record id="view_vendor_category_tree" model="ir.ui.view">
+        <field name="name">vendor.category.tree</field>
+        <field name="model">vendor.category</field>
+        <field name="arch" type="xml">
+            <tree string="Vendor Categories" sample="1">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="parent_id"/>
+                <field name="vendor_count"/>
+                <field name="active" column_invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vendor Category Search View -->
+    <record id="view_vendor_category_search" model="ir.ui.view">
+        <field name="name">vendor.category.search</field>
+        <field name="model">vendor.category</field>
+        <field name="arch" type="xml">
+            <search string="Vendor Categories">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="parent_id"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Parent Category" name="group_parent" context="{'group_by': 'parent_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Vendor Category Action -->
+    <record id="action_vendor_category" model="ir.actions.act_window">
+        <field name="name">Vendor Categories</field>
+        <field name="res_model">vendor.category</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first vendor category
+            </p>
+            <p>
+                Organize your vendors by creating categories.
+            </p>
+        </field>
+    </record>
+</odoo>
