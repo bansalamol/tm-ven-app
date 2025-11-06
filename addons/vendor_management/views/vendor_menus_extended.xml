@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Extended Menus for Enterprise Features -->
+
+    <!-- Procurement Submenu -->
+    <menuitem id="menu_procurement"
+              name="Procurement"
+              parent="menu_vendor_management_root"
+              sequence="20"/>
+
+    <menuitem id="menu_vendor_rfq"
+              name="RFQs"
+              parent="menu_procurement"
+              action="action_vendor_rfq"
+              sequence="10"/>
+
+    <menuitem id="menu_vendor_quotation"
+              name="Quotations"
+              parent="menu_procurement"
+              action="action_vendor_quotation"
+              sequence="20"/>
+
+    <menuitem id="menu_vendor_purchase_order"
+              name="Purchase Orders"
+              parent="menu_procurement"
+              action="action_vendor_purchase_order"
+              sequence="30"/>
+
+    <!-- Quality Submenu -->
+    <menuitem id="menu_quality"
+              name="Quality"
+              parent="menu_vendor_management_root"
+              sequence="30"/>
+
+    <menuitem id="menu_vendor_grn"
+              name="GRNs"
+              parent="menu_quality"
+              action="action_vendor_grn"
+              sequence="10"/>
+
+    <menuitem id="menu_vendor_ncr"
+              name="NCRs"
+              parent="menu_quality"
+              action="action_vendor_ncr"
+              sequence="20"/>
+
+    <!-- Financial Submenu -->
+    <menuitem id="menu_financial"
+              name="Financial"
+              parent="menu_vendor_management_root"
+              sequence="40"/>
+
+    <menuitem id="menu_vendor_invoice"
+              name="Invoices"
+              parent="menu_financial"
+              action="action_vendor_invoice"
+              sequence="10"/>
+
+    <menuitem id="menu_vendor_payment"
+              name="Payments"
+              parent="menu_financial"
+              action="action_vendor_payment"
+              sequence="20"/>
+
+    <!-- Documents Submenu -->
+    <menuitem id="menu_documents"
+              name="Documents"
+              parent="menu_vendor_management_root"
+              sequence="50"/>
+
+    <menuitem id="menu_vendor_document"
+              name="Vendor Documents"
+              parent="menu_documents"
+              action="action_vendor_document"
+              sequence="10"/>
+
+    <!-- Configuration - Add checklist templates -->
+    <menuitem id="menu_vendor_checklist_template"
+              name="Checklist Templates"
+              parent="menu_vendor_configuration"
+              action="action_vendor_checklist_template"
+              sequence="20"/>
+</odoo>

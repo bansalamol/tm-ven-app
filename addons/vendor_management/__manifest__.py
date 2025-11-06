@@ -67,11 +67,32 @@ Advanced Features
         'data/vendor_category_data.xml',
         'data/vendor_checklist_data.xml',
 
-        # Views - will be added incrementally
+        # Views - Core
         'views/vendor_category_views.xml',
         'views/vendor_rating_views.xml',
         'views/vendor_views.xml',
+
+        # Views - Procurement
+        'views/vendor_rfq_views.xml',
+        'views/vendor_quotation_views.xml',
+        'views/vendor_po_views.xml',
+
+        # Views - Quality
+        'views/vendor_grn_ncr_views.xml',
+
+        # Views - Financial
+        'views/vendor_invoice_payment_views.xml',
+
+        # Views - Documents & Checklist
+        'views/vendor_document_checklist_views.xml',
+
+        # Views - Extended Features
+        'views/vendor_views_extended.xml',
+        'views/vendor_wizard_views.xml',
+
+        # Menus
         'views/vendor_menus.xml',
+        'views/vendor_menus_extended.xml',
     ],
     'demo': [
         'data/vendor_demo.xml',
