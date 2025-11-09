@@ -68,9 +68,9 @@ Advanced Features
         'data/vendor_checklist_data.xml',
 
         # Views - Core
+        'views/vendor_views.xml',
         'views/vendor_category_views.xml',
         'views/vendor_rating_views.xml',
-        'views/vendor_views.xml',
 
         # Views - Procurement
         'views/vendor_rfq_views.xml',
