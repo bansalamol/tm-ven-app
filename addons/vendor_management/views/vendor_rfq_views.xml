@@ -163,7 +163,7 @@
                 <filter string="Awarded" name="filter_awarded" domain="[('state', '=', 'awarded')]"/>
                 <separator/>
                 <filter string="This Month" name="filter_this_month"
-                        domain="[('date_created', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d'))]"/>
+                        domain="[('date_created', '&gt;=', context_today().strftime('%Y-%m-01'))]"/>
                 <group expand="0" string="Group By">
                     <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
                     <filter string="Category" name="group_category" context="{'group_by': 'category_id'}"/>

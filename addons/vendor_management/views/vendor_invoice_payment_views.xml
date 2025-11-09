@@ -246,7 +246,7 @@
                 <filter string="Paid" name="filter_paid" domain="[('state', '=', 'paid')]"/>
                 <separator/>
                 <filter string="This Month" name="filter_this_month"
-                        domain="[('payment_date', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d'))]"/>
+                        domain="[('payment_date', '&gt;=', context_today().strftime('%Y-%m-01'))]"/>
                 <group expand="0" string="Group By">
                     <filter string="Vendor" name="group_vendor" context="{'group_by': 'vendor_id'}"/>
                     <filter string="Payment Method" name="group_method" context="{'group_by': 'payment_method'}"/>
