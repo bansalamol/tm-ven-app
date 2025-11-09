@@ -41,7 +41,7 @@
         </record>
 
         <record id="vendor_category_logistics" model="vendor.category">
-            <field name="name">Logistics & Transportation</field>
+            <field name="name">Logistics &amp; Transportation</field>
             <field name="code">LOG</field>
             <field name="color">7</field>
         </record>
